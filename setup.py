@@ -50,7 +50,7 @@ setup(
     namespace_packages=['ckanext'],
     include_package_data=True,
     zip_safe=False,
-    install_requires=['raven'],
+    install_requires=['sentry_sdk'],
     entry_points={
         'ckan.plugins': [
             'sentry = ckanext.sentry.plugins:SentryPlugin',

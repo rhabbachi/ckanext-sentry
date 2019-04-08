@@ -1,1 +1,1 @@
-raven==6.1.0
+sentry-sdk==0.7.10
