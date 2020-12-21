@@ -3,9 +3,9 @@
 import re
 
 from setuptools import setup, find_packages
+import os
 
-from ckanext.sentry import __version__, __description__
-
+HERE = os.path.dirname(__file__)
 RE_REQUIREMENT = re.compile(r'^\s*-r\s*(?P<filename>.*)$')
 
 PYPI_RST_FILTERS = (
@@ -36,10 +36,19 @@ long_description = '\n'.join((
     ''
 ))
 
+extras_require = {}
+_extras_groups = [
+    ('requirements', 'requirements.txt')
+]
+
+for group, filepath in _extras_groups:
+    with open(os.path.join(HERE, filepath), 'r') as f:
+        extras_require[group] = f.readlines()
+
 setup(
     name='ckanext-sentry',
-    version=__version__,
-    description=__description__,
+    version='0.0.2',
+    description='Sentry support for CKAN',
     long_description=long_description,
     keywords='CKAN, Sentry',
     author='Adrià Mercader',
